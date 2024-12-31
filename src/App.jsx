@@ -1,5 +1,11 @@
 import { useState } from 'react'
+import { Link } from "react-router-dom"
 import './App.css'
+
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from './HomePage';
+import GamePage from "./GamePage";
 
 function App() {
   
@@ -8,10 +14,15 @@ function App() {
   };
 
   return (
-    <div className="Guess Who's Coming">
-      <h1>Guess Who's Coming To Dinner</h1>
-      <button onClick={handleClick}>Start Game</button>
-    </div>
+
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomePage />}/>
+        <Route path='/play' element={<GamePage />}/>
+      </Routes>
+    </Router>
+
+    
   )
 }
 

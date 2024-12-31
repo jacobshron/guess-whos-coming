@@ -1,0 +1,8 @@
+button:hover {
+    cursor: pointer; /* Changes the cursor to a hand pointer on hover */
+  }
+  
+  /* To apply the rule to other button-like elements such as elements with a role of button */
+  [role="button"]:hover {
+      cursor: pointer;
+  }
