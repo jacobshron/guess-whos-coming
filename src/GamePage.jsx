@@ -75,7 +75,7 @@ function GamePage() {
       ) : (
         <>
            <h2 >Guest List:</h2>
-          <ul>
+          <ol>
             {names.map((name, index) => (
               <li 
                 className="hover-text"
@@ -87,7 +87,7 @@ function GamePage() {
                 }}
               >{name}</li>
             ))}
-          </ul>
+          </ol>
           <button onClick={() => setIsFinished(false)}>Back</button>
           <button onClick={() => setNames([])}>Clear List</button>
         </>
