@@ -8,11 +8,6 @@ import HomePage from './HomePage';
 import GamePage from "./GamePage";
 
 function App() {
-  
-  const handleClick = () => {
-    alert("Button Clicked!")
-  };
-
   return (
 
     <Router>
@@ -20,9 +15,8 @@ function App() {
         <Route path='/' element={<HomePage />}/>
         <Route path='/play' element={<GamePage />}/>
       </Routes>
+      <h1>Hi</h1>
     </Router>
-
-    
   )
 }
 
