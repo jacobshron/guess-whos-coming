@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import './GamePage.css';
+import styles from './GamePage.module.css';
 
 function ErrorMessage({message}) {
   if (!message) return null;
-  return <p style={ {color: 'red'} }>{message}</p>
+  return <p class="josefin-sans-error">{message}</p>
 }
 
 function GamePage() {
@@ -24,17 +24,26 @@ function GamePage() {
     setError('');
   };
 
+  
+
   const handleFinish = () => {
     if (names.length == 0 && !inputValue.trim()) {
       setError("Please enter a name!");
       return;
     }
+
+    let updatedNames = [...names];
+
     if (inputValue.trim()) {
-      setNames([...names, inputValue]);
+      updatedNames = [...names, inputValue]
       setInputValue('');
-    }
+    } 
+
     setError('');
+    const shuffledNames = [...updatedNames].sort(() => Math.random() - 0.5); // Simple shuffle
+    setNames(shuffledNames);
     setIsFinished(true);
+    return;
   };
 
   const handleInputChange = (e) => {
@@ -56,21 +65,22 @@ function GamePage() {
   }
 
   return (
-    <div>
+    <div className="center-container">
       {!isFinished ? (
         <>
-          <h1>Who's Your Guest?</h1>
+          <h1 class="josefin-sans-header">Who's Your Guest?</h1>
           <input
             type="text"
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Who's Coming?"
+            placeholder="Enter Name"
             onKeyDown={handleKeyDown}
           />
-          <button onClick={handlePass}>Pass</button>
-          <button onClick={handleFinish}>Finish</button>
 
           <ErrorMessage message={error ? "Please enter a name!" : ""}/>
+
+          <button class="button" onClick={handlePass}>Pass</button>
+          <button class="button" onClick={handleFinish}>Finish</button>
         </>
       ) : (
         <>
@@ -88,8 +98,8 @@ function GamePage() {
               >{name}</li>
             ))}
           </ol>
-          <button onClick={() => setIsFinished(false)}>Back</button>
-          <button onClick={() => setNames([])}>Clear List</button>
+          <button class={styles.button} onClick={() => setIsFinished(false)}>Back</button>
+          <button class={styles.button} onClick={() => setNames([])}>Clear List</button>
         </>
       )}
     </div>
